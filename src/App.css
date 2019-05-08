@@ -47,7 +47,10 @@
   text-align: center;
   padding: 20px;
   font-size: 50px;
-  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
 }
 
 .container-title {
@@ -57,4 +60,9 @@
   padding: 20px;
   border: solid 1px black;
   border-radius: 10px;
+}
+
+.assignment3 {
+  font-style: italic;
+  font-weight: bold;
 }

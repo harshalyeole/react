@@ -34,7 +34,7 @@ class RGB extends Component {
               </BreadcrumbItem>
               <BreadcrumbItem active>Colors</BreadcrumbItem>
             </Breadcrumb>
-            <div className="container-title"> Assignment 1: State and Props </div>
+            <div className="container-title"> Assignment 1: Colors </div>
             <Row>
               <Col md="4">
                 <Button color="danger" block onClick={(e) => this.changeColor("rgb")} active={this.state.rSelected === 1}>RGB</Button>{' '}
