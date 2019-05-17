@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class RGB extends Component {
+class Colors extends Component {
   constructor(props) {
     super(props);
     this.state =  {
@@ -63,4 +63,4 @@ class RGB extends Component {
   }
 }
 
-export default RGB;
+export default Colors;

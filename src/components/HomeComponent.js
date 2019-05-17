@@ -19,6 +19,7 @@ class Home extends Component {
                             <li><Link to='/colors'>Assignment 1: Colors</Link></li>
                             <li><Link to='/calculator'>Assignment 2: Calculator</Link></li>
                             <li><Link to='/'>Assignment 3: Routing</Link></li>
+                            <li><Link to='/shopping'>Final Assignment: Shopping</Link></li>
                         </ul>
                     </Col>
                     <Col md="4" />
