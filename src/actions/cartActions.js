@@ -7,9 +7,9 @@ export function removeFromCart(json) {
     };
 }
 
-export function addToCart(json) {
+export function addToCart(cart) {
     return {
         type: types.ADD_TO_CART,
-        cart: json.cart
+        cart: cart
     };
 }

@@ -6,7 +6,7 @@ export default function cart(state = initialState.cart, action) {
   switch (action.type) {
     case ADD_TO_CART:
       console.log('ADD_TO_CART Action')
-      return action;
+      return action.cart;
     case REMOVE_FROM_CART:
       newState = action.cart;
       console.log('REMOVE_FROM_CART Action')

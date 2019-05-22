@@ -5,6 +5,10 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { CARS } from '../data/mock'
 import {ToastsContainer, ToastsStore} from 'react-toasts';
+import * as cartActions from '../actions/cartActions';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class CarDetails extends Component {
     constructor(props) {
@@ -24,6 +28,12 @@ class CarDetails extends Component {
     add  = () => {
         let { cartItem, cartItem: {qty} } = this.state;
         cartItem.qty = qty +1;
+        
+        const {addToCart} = this.props.cartActions;
+        addToCart([{
+            cartItem: cartItem,
+            new: 1
+        }]) ;
         this.setState({
             cartItem: cartItem,
             new: 1
@@ -44,6 +54,7 @@ class CarDetails extends Component {
 
     render() {
         const { cartItem: car } = this.state;
+        console.log("==============", this.props)
         return (
             <Container>
                 <Breadcrumb>
@@ -82,4 +93,25 @@ class CarDetails extends Component {
     }
 }
 
-export default CarDetails;
+
+CarDetails.propTypes = {
+  cartActions: PropTypes.object,
+  cart: PropTypes.array
+};
+
+function mapStateToProps(state) {
+  return {
+    cart: state.cart
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    cartActions: bindActionCreators(cartActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CarDetails);

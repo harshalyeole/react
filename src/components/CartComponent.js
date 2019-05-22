@@ -70,7 +70,7 @@ class Cart extends Component {
     ));
 
     render() {
-        console.log("==============", this.props.cart)
+        console.log("==============", this.props)
         return (
             <Container>
                 <Breadcrumb>
@@ -106,7 +106,7 @@ Cart.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    stuffs: state.stuffs
+    cart: state.cart
   };
 }
 
