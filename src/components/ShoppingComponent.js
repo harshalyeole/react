@@ -8,8 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class Shopping extends Component {
   render() {
-    const carList = CARS.map((carItem)=> (
-      <Col md="4">
+    const carList = CARS.map((carItem, i)=> (
+      <Col md="4" key={i}>
         <Card car={carItem}/>
       </Col>
     ));
@@ -23,6 +23,9 @@ class Shopping extends Component {
               </BreadcrumbItem>
               <BreadcrumbItem active>Shopping</BreadcrumbItem>
             </Breadcrumb>
+            <div className="cart-container">
+                <Link to='/shopping/cart'><i className="fa fa-3x fa-shopping-cart" aria-hidden="true"></i></Link>
+            </div>
             <div className="container-title"> Final Assignment: Shopping </div>
             <Row>
                 { carList }

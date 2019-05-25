@@ -1,9 +1,9 @@
 import * as types from './actionTypes';
 
-export function removeFromCart(json) {
+export function removeFromCart(cart) {
     return {
         type: types.REMOVE_FROM_CART,
-        cart: json.cart
+        cart: cart
     };
 }
 

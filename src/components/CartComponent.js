@@ -3,7 +3,6 @@ import { Button, Container, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { CARS } from '../data/mock'
 import {ToastsContainer, ToastsStore} from 'react-toasts';
 import * as cartActions from '../actions/cartActions';
 import PropTypes from 'prop-types';
@@ -13,33 +12,21 @@ import {bindActionCreators} from 'redux';
 class Cart extends Component {
     constructor(props) {
         super(props);
+        const cars = this.props.cart;
+        var totalAmount = 0;
+        cars.forEach(c => {
+            totalAmount =totalAmount + ((parseInt(c.qty))*(parseInt(c.price)));
+        });
         this.state = {
-            totalAmount: "5,65,24,114",
-            cars: CARS
+            totalAmount,
+            cars
         }
     }
 
-    add  = () => {
-        // let { cartItem, cartItem: {qty} } = this.state;
-        // cartItem.qty = qty +1;
-        // this.setState({
-        //     cartItem: cartItem,
-        //     new: 1
-        // });
-        ToastsStore.success("Added one more!")
-    };
-
-    remove = () => {
-        // let { cartItem, cartItem:  {qty} } = this.state;
-        // if (cartItem.qty !== 0) {
-        //         cartItem.qty = qty -1;
-        //         this.setState({
-        //         cartItem: cartItem
-        //     })
-            ToastsStore.error("Removed from cart!")
-        // }
-    };
     payment = () => {
+        
+        const { addToCart } = this.props.cartActions;
+        addToCart([]);
         this.setState({
             cars: [],
             totalAmount: 0
@@ -53,13 +40,15 @@ class Cart extends Component {
                 <img className="cart-img" width="100%" src={car.image} alt={car.name} />
             </Col>
             <Col md="6"  className="cart-name-container display-inline"> 
-                {car.name} 
+                <Link to={"/shopping/cardeatils/"+car.id}>
+                    {car.name} 
+                </ Link>
                 <div className="cart-price-container">
                     <div>Price: {car.price}</div>
                     <div>
-                        <i className="fa fa-minus cart-icons" onClick={() => this.remove()}></i>
+                        {/* <i className="fa fa-minus cart-icons" onClick={() => this.remove()}></i> */}
                             <div className="cart-qty">Qty: {car.qty || 1}</div>
-                        <i className="fa fa-plus cart-icons" onClick={() => this.add()}></i>
+                        {/* <i className="fa fa-plus cart-icons" onClick={() => this.add()}></i> */}
                     </div>
                 </div>
             </Col>
@@ -70,7 +59,6 @@ class Cart extends Component {
     ));
 
     render() {
-        console.log("==============", this.props)
         return (
             <Container>
                 <Breadcrumb>
